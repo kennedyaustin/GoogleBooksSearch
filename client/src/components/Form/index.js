@@ -17,7 +17,7 @@ return (
       />
       <button onClick={props.handleFormSubmit} className="btn btn-dark mt-3 mb-5">
         Search
-        </button>
+      </button>
     </div>
   </form>
   </div>

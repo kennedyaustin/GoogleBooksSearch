@@ -3,6 +3,7 @@ import API from "../utils/API";
 import Results from "../components/Results";
 
 class Saved extends Component {
+
     state = {
         savedBooks: [],
     }
@@ -21,6 +22,7 @@ class Saved extends Component {
             </div>
         )
     }
+    
 }
 
 export default Saved;

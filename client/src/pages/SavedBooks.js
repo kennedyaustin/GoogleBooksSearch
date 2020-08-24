@@ -8,6 +8,8 @@ class Saved extends Component {
         savedBooks: [],
     }
 
+    // When the page loads, the saved books that the user has 
+    // chosen will be displayed to them
     componentDidMount() {
         API.savedBooks()
             .then(savedBooks => this.setState({ savedBooks: savedBooks }))
@@ -17,8 +19,8 @@ class Saved extends Component {
     render() {
         return (
             <div className="container">
-                <h2>Saved Books</h2>
-                <Results books={this.state.savedBooks} />
+                <h2>Your Saved Books</h2>
+                <Results books= {this.state.savedBooks} />
             </div>
         )
     }

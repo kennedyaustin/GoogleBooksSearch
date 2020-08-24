@@ -9,6 +9,19 @@ class Search extends React.Component {
         books: []
     };
 
+    handleInputChange = (e) => {
+        const name = (e).target.name;
+        const value = (e).target.value;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    handleFormSubmit = (e) => {
+        (e).preventDefault();
+        this.searchBook(this.state.search);
+    };
+
     // When the user first loads the page Ant books will 
     // be populated to the page
     componentDidMount() {
@@ -17,12 +30,13 @@ class Search extends React.Component {
 
     // Create book cards that hold the following info
     createBookCard = bookData => {
+        console.log(bookData)
         return {
             _id: bookData.id,
             title: bookData.volumeInfo.title,
             authors: bookData.volumeInfo.authors,
             description: bookData.volumeInfo.description,
-            image: bookData.volumeInfo.imageLinks.thumbnail,
+            image: bookData.volumeInfo.imageLinks.smallThumbnail,
             link: bookData.volumeInfo.previewLink
         }
     }
@@ -34,29 +48,18 @@ class Search extends React.Component {
             .catch(err => console.error(err));
     };
 
-    handleInputChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
-        this.setState({
-            [name]: value
-        });
-    };
-
-    handleFormSubmit = event => {
-        event.preventDefault();
-        this.searchBook(this.state.search);
-    };
-
     render() {
         return (
             <div>
+                {/* Search input field for users */}
                 <Form
                     search={this.state.search}
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
                 />
+                {/* Results that are shown to the users */}
                 <div className="container">
-                    <h2>Results</h2>
+                    <h2 className='text-center'>Results:</h2>
                     <Results books={this.state.books} />
                 </div>
             </div>

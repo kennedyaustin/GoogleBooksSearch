@@ -7,6 +7,8 @@ class Results extends Component {
         savedBooks: [],
     }
 
+    // When the page first loads the user will be shown 
+    // the books that they saved
     componentDidMount() {
         API.savedBooks()
             .then(savedBooks => this.setState({ savedBooks: savedBooks }))
@@ -21,9 +23,10 @@ class Results extends Component {
                 .catch(err => console.error(err));
         } else {
             API.saveBook(book)
-                .then(savedBook => this.setState({ savedBooks: this.state.savedBooks.concat([savedBook]) }))
+                .then(savedBook => this.setState({ savedBooks: this.state.savedBooks.concat( [savedBook] )}))
                 .catch(err => console.error(err));
         }
+
     }
 
     render() {

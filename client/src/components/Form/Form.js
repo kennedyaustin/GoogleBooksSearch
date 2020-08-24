@@ -1,22 +1,28 @@
 import React from "react";
-import "./style.css"
 
-// This component lets us use a bootstrap input element without worrying about class names
-// or manually wrapping the input with a form-group div
-// All of the props passed to this component are spread onto the input element
-export function Input(props) {
-    return (
-        <div className="input-group input-group-lg">
-            <input className="form-control" type="text" {...props} />
-        </div>
-    );
-}
 
-// Destructuring the type, className, children and onClick props, applying them to the button element
-export function SearchButton({ type = "default", className, children, onClick }) {
-    return (
-        <button onClick={onClick} className={["search btn btn-lg", `btn-${type}`, className].join(" ")}>
-            {children}
+function Form(props){
+return (
+  <div className="container">
+  <form>
+    <div className="form-group">
+      <label htmlFor="search"><h2>Search for and save Books of Interest</h2></label>
+      <input
+        onChange={props.handleInputChange}
+        value={props.search}
+        name="search"
+        type="text"
+        className="form-control"
+        placeholder="Search a Book"
+        id="search"
+      />
+      <button onClick={props.handleFormSubmit} className="btn btn-dark mt-3 mb-5">
+        Search
         </button>
-    );
+    </div>
+  </form>
+  </div>
+);
 }
+
+export default Form;

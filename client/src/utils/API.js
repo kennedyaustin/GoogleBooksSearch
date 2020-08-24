@@ -1,9 +1,12 @@
 import axios from "axios";
 
+const googleURL= 'https://www.googleapis.com/books/v1/volumes?q='
+
 export default {
-  // Gets all books
-  getBooks: function() {
-    return axios.get("/api/books");
+  // Calls the Googlebooks API and retrieves the books
+  // based on the query input by the user
+  searchBooks: function(query) {
+    return axios.get(googleURL + query);
   },
   // Gets the book with the given id
   getBook: function(id) {
@@ -16,5 +19,7 @@ export default {
   // Saves a book to the database
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
-  }
+  },
+  // Gets all the books saved in the database
+  getBooks: () => axios.get('/api/books')
 };

@@ -11,15 +11,15 @@ class Saved extends Component {
     // When the page loads, the saved books that the user has 
     // chosen will be displayed to them
     componentDidMount() {
-        API.savedBooks()
-            .then(savedBooks => this.setState({ savedBooks: savedBooks }))
-            .catch(err => console.error(err));
+        // API.savedBooks()
+        //     .then(savedBooks => this.setState({ savedBooks: savedBooks }))
+        //     .catch(err => console.error(err));
     }
 
     render() {
         return (
             <div className="container">
-                <h2>Your Saved Books</h2>
+                <h2 className= "text-center">Your Saved Books</h2>
                 <Results books= {this.state.savedBooks} />
             </div>
         )
